@@ -6,6 +6,8 @@ namespace Core.ExtractItems
     {
         [Header("GameObject")]
         [SerializeField] private GameObject m_gameObjectItem = null;
+        [Header("Collider")]
+        [SerializeField] private Collider m_colliderItem = null;
         [Header("ToolsType")] 
         [SerializeField] private ToolsName m_toolsName = ToolsName.Unset;
         [Header("Extract Type")] 
@@ -14,6 +16,7 @@ namespace Core.ExtractItems
         [SerializeField]  private int m_ItemCount = 0;
      
        public GameObject GameObjectItem => m_gameObjectItem;
+       public Collider ColliderItem => m_colliderItem;
        public  ToolsName  ToolsName => m_toolsName;
        public  ExtractType  ExtractType => m_extractType;
        public int ItemCount => m_ItemCount;

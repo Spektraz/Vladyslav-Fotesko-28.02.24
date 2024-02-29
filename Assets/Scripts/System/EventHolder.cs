@@ -3,11 +3,11 @@ namespace System
 {
     public class EventHolder 
     {
-        public Action<int, ExtractType> OnChangeCountSpotEvent;
-        public void OnChangeCountSpot(int count,  ExtractType extractType)
+        public Action<int, int, ExtractType> OnSpendItemsEvent;
+        public void OnSpendItems(int count, int itemHave, ExtractType extractType)
         {
-            var temp = OnChangeCountSpotEvent;
-            temp?.Invoke(count,extractType);
+            var temp = OnSpendItemsEvent;
+            temp?.Invoke(count, itemHave,extractType);
         }
         public Action<ToolsName> OnSwitchToExtractEvent;
         public void OnSwitchToExtract(ToolsName toolsName)
@@ -28,10 +28,28 @@ namespace System
             temp?.Invoke(stateJoystick);
         }
         public Action<int,ExtractType> OnAddItemsEvent;
-        public void OnAddItems(int itemsCount, ExtractType extractType)
+        public void OnAddItems(int itemsMustBeCount, ExtractType extractType)
         {
             var temp = OnAddItemsEvent;
-            temp?.Invoke(itemsCount,extractType);
+            temp?.Invoke(itemsMustBeCount,extractType);
+        }
+        public Action<int> OnMaxItemsEvent;
+        public void OnMaxItems(int itemsCount)
+        {
+            var temp = OnMaxItemsEvent;
+            temp?.Invoke(itemsCount);
+        }
+        public Action OnChangeSpotEvent;
+        public void OnChangeSpot()
+        {
+            var temp = OnChangeSpotEvent;
+            temp?.Invoke();
+        }
+        public Action<bool> OnSetUpdateScoreEvent;
+        public void OnSetUpdateScore(bool isState)
+        {
+            var temp = OnSetUpdateScoreEvent;
+            temp?.Invoke(isState);
         }
     }
 }

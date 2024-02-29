@@ -25,13 +25,14 @@ namespace Core.MainUi
         private void InitializeEvents()
         {
             ApplicationContainer.Instance.EventHolder.OnAddItemsEvent += AddInCounter;
-            ApplicationContainer.Instance.EventHolder.OnChangeCountSpotEvent += SpendInCounter;
+            ApplicationContainer.Instance.EventHolder.OnSpendItemsEvent += SpendInCounter;
         }
        
         private void DisposeEvents()
         {
             ApplicationContainer.Instance.EventHolder.OnAddItemsEvent -= AddInCounter;
-          
+            ApplicationContainer.Instance.EventHolder.OnSpendItemsEvent -= SpendInCounter;
+
         }
 
         private void AddInCounter(int itemCount, ExtractType extractType)
@@ -57,24 +58,39 @@ namespace Core.MainUi
             }
         }
 
-        private void SpendInCounter(int itemCount, ExtractType extractType)
+        private void SpendInCounter(int itemMustBe, int itemHave, ExtractType extractType)
         {
             switch (extractType)
             {
                 case ExtractType.Wood:
-                    inventory.Wood -= itemCount;
-                    m_viewModel.WoodCount.text = inventory.Wood.ToString();
+                    if (inventory.Wood > itemMustBe)
+                    {
+                        inventory.Wood -= itemMustBe;
+                        m_viewModel.WoodCount.text = inventory.Wood.ToString();
+                        ApplicationContainer.Instance.EventHolder.OnMaxItems(itemMustBe);
+                    }
+                    else
+                    {
+                        inventory.ResultZone += itemHave + inventory.Wood;
+                        ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone);
+                        if (inventory.ResultZone >= itemMustBe)
+                        {
+                            inventory.ResultZone = 0;
+                        }
+                        inventory.Wood = 0;
+                        m_viewModel.WoodCount.text  = inventory.Wood.ToString();
+                    }
                     break;
                 case ExtractType.Lumber:
-                    inventory.Lumber -= itemCount;
+                    inventory.Lumber -= itemMustBe;
                     m_viewModel.LumberCount.text = inventory.Lumber.ToString();
                     break;
                 case ExtractType.Stone:
-                    inventory.Stone -= itemCount;
+                    inventory.Stone -= itemMustBe;
                     m_viewModel.StoneCount.text = inventory.Stone.ToString();
                     break;
                 case ExtractType.Crystall:
-                    inventory.Crystall -= itemCount;
+                    inventory.Crystall -= itemMustBe;
                     m_viewModel.CrystallCount.text = inventory.Crystall.ToString();
                     break;
             }

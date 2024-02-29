@@ -6,5 +6,7 @@ namespace Core.MainUi
       public int Lumber;
       public int Stone;
       public int Crystall;
+      
+      public int ResultZone;
    }
 }

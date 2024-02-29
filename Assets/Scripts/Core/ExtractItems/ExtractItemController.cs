@@ -53,17 +53,18 @@ namespace Core.ExtractItems
             yield return new WaitForSeconds(2.5f);
             ApplicationContainer.Instance.EventHolder.OnSwitchToExtract(ToolsName.Unset);
             m_viewModel.GameObjectItem.SetActive(false);
+            m_viewModel.ColliderItem.enabled = false;
             ApplicationContainer.Instance.EventHolder.OnAddItems(m_viewModel.ItemCount, m_viewModel.ExtractType);
             m_isRotate = false;
             yield return new WaitForSeconds(5.0f);
-            Debug.Log("REload");
             m_viewModel.GameObjectItem.transform.rotation = new Quaternion(0, 0, 0 , 0);
             m_viewModel.GameObjectItem.SetActive(true);
+            m_viewModel.ColliderItem.enabled = true;
         }
      
         public void Dispose()
         {
-            DisposeEvents();
+           // DisposeEvents();
         }
     }
 }

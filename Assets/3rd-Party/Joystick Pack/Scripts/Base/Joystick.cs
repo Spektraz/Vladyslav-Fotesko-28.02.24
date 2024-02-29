@@ -141,7 +141,6 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)
     {
         Vector2 localPoint = Vector2.zero;
-        Debug.Log("baseRect " + baseRect + "cam " + cam + "localPoint " + localPoint + "screenPosition "+screenPosition);
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(baseRect, screenPosition, cam, out localPoint))
         {
             Vector2 pivotOffset = baseRect.pivot * baseRect.sizeDelta;

@@ -1,4 +1,5 @@
 using System;
+
 namespace Core.Terrain
 {
     public class TerrainController 
@@ -22,13 +23,16 @@ namespace Core.Terrain
 
         private void InitializeEvents()
         {
-          //    ApplicationContainer.Instance.EventHolder.OnChangeCountSpotEvent += SwitchOnCollector;
+             ApplicationContainer.Instance.EventHolder.OnChangeSpotEvent += AddZone;
         }
         private void SwitchOnZone()
         {
             SwitchOffZone();
             m_viewModel.CanvasListZone[countOpen].enabled = true;
             m_viewModel.SpriteListZone[countOpen].enabled = true;
+            m_viewModel.ColliderZone[countOpen].enabled = true;
+            if (countOpen > 0)
+              m_viewModel.ObjectListZone[countOpen-1].SetActive(true);
         }
 
         private void SwitchOffZone()
@@ -37,6 +41,7 @@ namespace Core.Terrain
             {
                 m_viewModel.CanvasListZone[i].enabled = false;
                 m_viewModel.SpriteListZone[i].enabled = false;
+                m_viewModel.ColliderZone[i].enabled = false;
                 if(countOpen <= i)
                 {
                  m_viewModel.ObjectListZone[i].SetActive(false);
@@ -48,13 +53,14 @@ namespace Core.Terrain
             
         }
 
-        public void AddNewZone()
-        {
-            countOpen++;
+        private void AddZone()
+        {         
+            countOpen =+ 1;         
+            SwitchOnZone();
         }
         private void DisposeEvents()
         {
-         //   ApplicationContainer.Instance.EventHolder.OnChangeCountSpotEvent -= SwitchOnCollector;
+           ApplicationContainer.Instance.EventHolder.OnChangeSpotEvent -= AddZone;
         }
         public void Dispose()
         {

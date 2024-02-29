@@ -1,4 +1,6 @@
+using Core.MainUi;
 using System;
+using UnityEngine;
 
 namespace Core.Spot
 {
@@ -6,10 +8,12 @@ namespace Core.Spot
     {
 
         private SpotModel m_viewModel = null;
-       
+        private string maxCount = null;
+        private bool isUpdate = false;
         public SpotController(SpotModel viewModel)
         {
-            m_viewModel = viewModel;
+            m_viewModel = viewModel; 
+            maxCount = m_viewModel.TextMustBe.text.Substring(1);        
         }
         public void Initialize()
         {
@@ -19,21 +23,36 @@ namespace Core.Spot
 
         public void TriggerEnter()
         {
-            ApplicationContainer.Instance.EventHolder.OnChangeCountSpot(Convert.ToInt32(m_viewModel.TextMustBe.text), m_viewModel.ExtractType);
+            isUpdate = false;
+            int countNow = 0;
+            int.TryParse(m_viewModel.TextCounter.ToString(), out countNow);
+            ApplicationContainer.Instance.EventHolder.OnSpendItems(Convert.ToInt32(maxCount),  countNow, m_viewModel.ExtractType);
         }
 
         private void InitializeEvents()
         {
-            
+            ApplicationContainer.Instance.EventHolder.OnMaxItemsEvent += SetCounter;
+            ApplicationContainer.Instance.EventHolder.OnSetUpdateScoreEvent += SetScore;
         }
-
+    
         private void SetCounter(int count)
-        {
-            m_viewModel.TextCounter.text = count.ToString();
+        {        
+            m_viewModel.TextCounter.text = count.ToString();          
+            if (count == Convert.ToInt32(maxCount))
+            {
+                ApplicationContainer.Instance.EventHolder.OnChangeSpot();
+                m_viewModel.TextCounter.text = "0";
+                ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);             
+            }
+        }
+        private void SetScore(bool isState)
+        {      
+               m_viewModel.TextCounter.text = "0";        
         }
         private void DisposeEvents()
         {
-          
+            ApplicationContainer.Instance.EventHolder.OnMaxItemsEvent -= SetCounter;
+            ApplicationContainer.Instance.EventHolder.OnSetUpdateScoreEvent -= SetScore;
         }
 
      
