@@ -13,20 +13,24 @@ namespace Core.Spot
         }
         public void Initialize()
         {
-          
+            SetCounter(0);
             InitializeEvents();
         }
 
         public void TriggerEnter()
         {
-        //    ApplicationContainer.Instance.EventHolder.OnChangeCountSpot();
+            ApplicationContainer.Instance.EventHolder.OnChangeCountSpot(Convert.ToInt32(m_viewModel.TextMustBe.text), m_viewModel.ExtractType);
         }
 
         private void InitializeEvents()
         {
             
         }
-       
+
+        private void SetCounter(int count)
+        {
+            m_viewModel.TextCounter.text = count.ToString();
+        }
         private void DisposeEvents()
         {
           

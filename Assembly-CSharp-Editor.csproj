@@ -41,10 +41,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\3rd-Party\Joystick Pack\Scripts\Editor\JoystickEditor.cs" />
-     <Compile Include="Assets\3rd-Party\Joystick Pack\Scripts\Editor\FloatingJoystickEditor.cs" />
-     <Compile Include="Assets\3rd-Party\Joystick Pack\Scripts\Editor\DynamicJoystickEditor.cs" />
      <Compile Include="Assets\3rd-Party\Joystick Pack\Scripts\Editor\VariableJoystickEditor.cs" />
+     <Compile Include="Assets\3rd-Party\Joystick Pack\Scripts\Editor\DynamicJoystickEditor.cs" />
+     <Compile Include="Assets\3rd-Party\Joystick Pack\Scripts\Editor\FloatingJoystickEditor.cs" />
+     <Compile Include="Assets\3rd-Party\Joystick Pack\Scripts\Editor\JoystickEditor.cs" />
      <Folder Include="Assets\3rd-Party\Joystick Pack\Scripts\Editor" />
      <Reference Include="UnityEngine">
      <HintPath>D:\Unity\2021.3.24f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
@@ -304,8 +304,14 @@
      <Reference Include="UnityEditor.WindowsStandalone.Extensions">
      <HintPath>D:\Unity\2021.3.24f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
      </Reference>
+     <Reference Include="Zenject-usage">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Plastic.Newtonsoft.Json">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.collab-proxy@2.0.3\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Pdb">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Pdb.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Plastic.Antlr3.Runtime">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.collab-proxy@2.0.3\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
@@ -313,11 +319,17 @@
      <Reference Include="Unity.VisualScripting.YamlDotNet">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
      </Reference>
-     <Reference Include="unityplastic">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.collab-proxy@2.0.3\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+     <Reference Include="Unity.VisualScripting.TextureAssets">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.IonicZip">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+     </Reference>
+     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
+     </Reference>
+     <Reference Include="unityplastic">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.collab-proxy@2.0.3\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
      </Reference>
      <Reference Include="log4netPlastic">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.collab-proxy@2.0.3\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
@@ -325,23 +337,11 @@
      <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
      </Reference>
-     <Reference Include="ReportGeneratorMerged">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.testtools.codecoverage@1.2.2\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.TextureAssets">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
-     </Reference>
-     <Reference Include="Zenject-usage">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
-     </Reference>
-     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Pdb">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Pdb.dll</HintPath>
-     </Reference>
-     <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
-     </Reference>
      <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Mdb">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
+     </Reference>
+     <Reference Include="ReportGeneratorMerged">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\PackageCache\com.unity.testtools.codecoverage@1.2.2\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
      </Reference>
      <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
@@ -736,65 +736,53 @@
      <Reference Include="UnityEditor.TestRunner">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TextMeshPro.Editor">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="UnityEditor.UI">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+     <Reference Include="Unity.VisualScripting.Flow.Editor">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VSCode.Editor">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.EditorCoroutines.Editor">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TextMeshPro">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Core.Editor">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Flow">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.State">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.State.Editor">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Rider.Editor">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Timeline">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Timeline.Editor">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+     <Reference Include="Unity.TextMeshPro.Editor">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualStudio.Editor">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+     <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Timeline">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Core.Editor">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TextMeshPro">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.State.Editor">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Flow">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.UI">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
      </Reference>
      <Reference Include="Unity.PlasticSCM.Editor">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.VisualScripting.Shared.Editor">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+     <Reference Include="Unity.Rider.Editor">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
      </Reference>
      <Reference Include="UnityEngine.UI">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
@@ -802,8 +790,20 @@
      <Reference Include="Unity.VisualScripting.Core">
      <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.VisualScripting.Flow.Editor">
-     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+     <Reference Include="Unity.EditorCoroutines.Editor">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.Shared.Editor">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Timeline.Editor">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.State">
+     <HintPath>D:\UnityProject\24Play\Vladyslav-Fotesko-28.02.24\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>

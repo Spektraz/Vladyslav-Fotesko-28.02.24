@@ -13,7 +13,16 @@ namespace Core.Player
             m_controller = new PlayerController(m_viewModel);
             m_controller.Initialize();
         }
-        
+
+        private void Update()
+        {
+            m_controller.Move();
+        }
+
+        public void OnEndAttack()
+        {
+            m_controller.AnimationAttack();
+        }
 
         private void OnDestroy()
         {

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -55,29 +54,32 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         handle.anchorMax = center;
         handle.pivot = center;
         handle.anchoredPosition = Vector2.zero;
+        cam = null;
+        if (canvas.renderMode == RenderMode.ScreenSpaceCamera)
+            cam = canvas.worldCamera;
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
+        ApplicationContainer.Instance.EventHolder.OnStopJoystick(false);
         OnDrag(eventData);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        cam = null;
-        if (canvas.renderMode == RenderMode.ScreenSpaceCamera)
-            cam = canvas.worldCamera;
-
+       
         Vector2 position = RectTransformUtility.WorldToScreenPoint(cam, background.position);
         Vector2 radius = background.sizeDelta / 2;
         input = (eventData.position - position) / (radius * canvas.scaleFactor);
         FormatInput();
         HandleInput(input.magnitude, input.normalized, radius, cam);
         handle.anchoredPosition = input * radius * handleRange;
+        ApplicationContainer.Instance.EventHolder.OnPositionJoystick(handle.anchoredPosition);
     }
 
     protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)
     {
+   
         if (magnitude > deadZone)
         {
             if (magnitude > 1)
@@ -89,6 +91,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     private void FormatInput()
     {
+     
         if (axisOptions == AxisOptions.Horizontal)
             input = new Vector2(input.x, 0f);
         else if (axisOptions == AxisOptions.Vertical)
@@ -99,7 +102,6 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         if (value == 0)
             return value;
-
         if (axisOptions == AxisOptions.Both)
         {
             float angle = Vector2.Angle(input, Vector2.up);
@@ -133,11 +135,13 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
+        ApplicationContainer.Instance.EventHolder.OnStopJoystick(true);
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)
     {
         Vector2 localPoint = Vector2.zero;
+        Debug.Log("baseRect " + baseRect + "cam " + cam + "localPoint " + localPoint + "screenPosition "+screenPosition);
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(baseRect, screenPosition, cam, out localPoint))
         {
             Vector2 pivotOffset = baseRect.pivot * baseRect.sizeDelta;

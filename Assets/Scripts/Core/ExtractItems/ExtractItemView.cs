@@ -20,7 +20,14 @@ namespace Core.ExtractItems
         {
           
             m_controller.TriggerEnter();
+            StartCoroutine(m_controller.DestroyObjects());
         }
+
+        private void Update()
+        {
+            m_controller.RotateObject();
+        }
+
         private void OnTriggerExit(Collider other)
         {
           

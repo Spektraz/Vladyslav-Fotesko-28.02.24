@@ -22,7 +22,7 @@ namespace Core.Terrain
 
         private void InitializeEvents()
         {
-              ApplicationContainer.Instance.EventHolder.OnChangeCountSpotEvent += SwitchOnCollector;
+          //    ApplicationContainer.Instance.EventHolder.OnChangeCountSpotEvent += SwitchOnCollector;
         }
         private void SwitchOnZone()
         {
@@ -54,7 +54,7 @@ namespace Core.Terrain
         }
         private void DisposeEvents()
         {
-            ApplicationContainer.Instance.EventHolder.OnChangeCountSpotEvent -= SwitchOnCollector;
+         //   ApplicationContainer.Instance.EventHolder.OnChangeCountSpotEvent -= SwitchOnCollector;
         }
         public void Dispose()
         {

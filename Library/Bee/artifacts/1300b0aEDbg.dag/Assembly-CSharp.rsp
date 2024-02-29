@@ -365,6 +365,8 @@
 "Assets/Scripts/Core/ExtractItems/ExtractItemController.cs"
 "Assets/Scripts/Core/ExtractItems/ExtractItemModel.cs"
 "Assets/Scripts/Core/ExtractItems/ExtractItemView.cs"
+"Assets/Scripts/Core/ExtractItems/ExtractType.cs"
+"Assets/Scripts/Core/MainUi/InventoryStruct.cs"
 "Assets/Scripts/Core/MainUi/MainUiController.cs"
 "Assets/Scripts/Core/MainUi/MainUiModel.cs"
 "Assets/Scripts/Core/MainUi/MainUiView.cs"
