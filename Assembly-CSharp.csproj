@@ -57,11 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\3rd-Party\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
+    <Compile Include="Assets\Scripts\Meta\ReloadScene.cs" />
     <Compile Include="Assets\3rd-Party\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+    <Compile Include="Assets\Scripts\Core\Wall\WallModel.cs" />
     <Compile Include="Assets\Scripts\Core\Spot\SpotView.cs" />
     <Compile Include="Assets\Scripts\Core\Spot\SpotController.cs" />
     <Compile Include="Assets\Scripts\System\ApplicationContainer.cs" />
     <Compile Include="Assets\Scripts\Core\MainUi\InventoryStruct.cs" />
+    <Compile Include="Assets\Scripts\Core\Wall\WallController.cs" />
     <Compile Include="Assets\Scripts\Core\Terrain\TerrainView.cs" />
     <Compile Include="Assets\Scripts\Core\Player\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\System\GlobalConst.cs" />
@@ -71,6 +74,7 @@
     <Compile Include="Assets\Scripts\System\SaveManager.cs" />
     <Compile Include="Assets\3rd-Party\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Scripts\Core\Terrain\TerrainController.cs" />
+    <Compile Include="Assets\Scripts\System\GameSceneInstaller.cs" />
     <Compile Include="Assets\3rd-Party\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\Scripts\Core\Player\ToolsName.cs" />
     <Compile Include="Assets\Scripts\System\EventHolder.cs" />
@@ -85,7 +89,14 @@
     <Compile Include="Assets\Scripts\Core\ExtractItems\ExtractItemView.cs" />
     <Compile Include="Assets\Scripts\Core\Player\PlayerView.cs" />
     <Compile Include="Assets\Scripts\Core\MainUi\MainUiModel.cs" />
+    <Compile Include="Assets\Scripts\Core\Wall\WallView.cs" />
     <Compile Include="Assets\Scripts\Core\MainUi\MainUiController.cs" />
+    <Compile Include="Assets\Scripts\Core\Finish\FinishView.cs" />
+    <Compile Include="Assets\Scripts\Core\Finish\FinishModel.cs" />
+    <Compile Include="Assets\Scripts\Core\Finish\FinishController.cs" />
+    <Compile Include="Assets\Scripts\Core\CreateLumber\CreateLumberView.cs" />
+    <Compile Include="Assets\Scripts\Core\CreateLumber\CreateLumberModel.cs" />
+    <Compile Include="Assets\Scripts\Core\CreateLumber\CreateLumberContoller.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rd-Party\TextMesh Pro\Shaders\TMPro.cginc" />

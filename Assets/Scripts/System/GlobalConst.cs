@@ -9,9 +9,10 @@ namespace System
         public const string CoinsString = "CoinsStringss";
         public const string CoinsInt = "CoinsIntss";
         public const string SceneMainGame = "MainScene";
-        [Header("Animation")]
-        public const string WheelTrigger = "Spin";
-
+        [Header("Scene")]
+        public const string GameScene = "Scenes/Game";
+        public const string ReloadScene = "Scenes/SampleScene";
+        
         [Header("Coins")] 
         public const int StartNumber = 1;
         public const int FinishNumber = 100;

@@ -31,6 +31,7 @@ namespace Core.Spot
 
         private void InitializeEvents()
         {
+            Debug.Log("InitializeEvents");
             ApplicationContainer.Instance.EventHolder.OnMaxItemsEvent += SetCounter;
             ApplicationContainer.Instance.EventHolder.OnSetUpdateScoreEvent += SetScore;
         }
@@ -40,14 +41,16 @@ namespace Core.Spot
             m_viewModel.TextCounter.text = count.ToString();          
             if (count == Convert.ToInt32(maxCount))
             {
+                ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
                 ApplicationContainer.Instance.EventHolder.OnChangeSpot();
                 m_viewModel.TextCounter.text = "0";
-                ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);             
+                      
             }
         }
         private void SetScore(bool isState)
-        {      
-               m_viewModel.TextCounter.text = "0";        
+        {
+            Debug.Log("SetScore");
+            m_viewModel.TextCounter.text = "0";        
         }
         private void DisposeEvents()
         {

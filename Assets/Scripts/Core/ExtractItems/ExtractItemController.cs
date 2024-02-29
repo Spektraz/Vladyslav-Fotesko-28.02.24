@@ -8,7 +8,8 @@ namespace Core.ExtractItems
     {
 
         private ExtractItemModel m_viewModel = null;
-        private float speedDestroy = 10;
+        private int m_countDispose = 0;
+        private float m_speedDestroy = 10;
         private string m_animDestroy = "Destroy";
         private string m_animCreate = "Create";
         private bool m_isRotate = false;
@@ -44,11 +45,16 @@ namespace Core.ExtractItems
         public void RotateObject()
         {
             if (m_isRotate)
-                m_viewModel.GameObjectItem.transform.Rotate(0, 0, speedDestroy * Time.deltaTime);
+                m_viewModel.GameObjectItem.transform.Rotate(0, 0, m_speedDestroy * Time.deltaTime);
         }
         public IEnumerator DestroyObjects()
         {
+            yield return new WaitForSeconds(0.5f);
+            DisposeObject();
+            yield return new WaitForSeconds(1.0f);
+            DisposeObject();
             yield return new WaitForSeconds(1.5f);
+            DisposeObject();
             m_isRotate = true;
             yield return new WaitForSeconds(2.5f);
             ApplicationContainer.Instance.EventHolder.OnSwitchToExtract(ToolsName.Unset);
@@ -58,10 +64,29 @@ namespace Core.ExtractItems
             m_isRotate = false;
             yield return new WaitForSeconds(5.0f);
             m_viewModel.GameObjectItem.transform.rotation = new Quaternion(0, 0, 0 , 0);
+            CreateObject();
             m_viewModel.GameObjectItem.SetActive(true);
             m_viewModel.ColliderItem.enabled = true;
+            m_countDispose = 0;
         }
-     
+
+        private void DisposeObject()
+        {
+            if(m_viewModel.GameObjectListItem == null)
+                return;
+            m_viewModel.GameObjectListItem[m_countDispose].SetActive(false);
+            m_countDispose += 1;
+        }
+
+        private void CreateObject()
+        {
+            if (m_viewModel.GameObjectListItem == null)
+                return;
+            foreach (var var in m_viewModel.GameObjectListItem)
+            {
+                var.SetActive(true);
+            }
+        }
         public void Dispose()
         {
            // DisposeEvents();

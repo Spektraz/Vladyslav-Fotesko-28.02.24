@@ -71,13 +71,16 @@ namespace Core.MainUi
                     }
                     else
                     {
+                        int result = 0;
                         inventory.ResultZone += itemHave + inventory.Wood;
+                        //  inventory.ResultZone += itemHave + inventory.Wood;
                         ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone);
                         if (inventory.ResultZone >= itemMustBe)
                         {
-                            inventory.ResultZone = 0;
+                            result =  inventory.ResultZone - itemMustBe;
+                            inventory.ResultZone = 0;   
                         }
-                        inventory.Wood = 0;
+                        inventory.Wood = result;
                         m_viewModel.WoodCount.text  = inventory.Wood.ToString();
                     }
                     break;
