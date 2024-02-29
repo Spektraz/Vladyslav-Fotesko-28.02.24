@@ -31,8 +31,12 @@ namespace Core.Terrain
             m_viewModel.CanvasListZone[countOpen].enabled = true;
             m_viewModel.SpriteListZone[countOpen].enabled = true;
             m_viewModel.ColliderZone[countOpen].enabled = true;
+          
             if (countOpen > 0)
-              m_viewModel.ObjectListZone[countOpen-1].SetActive(true);
+            {
+                m_viewModel.ObjectListZone[countOpen - 1].SetActive(true);
+                m_viewModel.ColliderReloadZone[countOpen - 1].enabled = false;
+            }
         }
 
         private void SwitchOffZone()
@@ -42,7 +46,8 @@ namespace Core.Terrain
                 m_viewModel.CanvasListZone[i].enabled = false;
                 m_viewModel.SpriteListZone[i].enabled = false;
                 m_viewModel.ColliderZone[i].enabled = false;
-                if(countOpen <= i)
+                m_viewModel.ColliderReloadZone[i].enabled = true;
+                if (countOpen <= i)
                 {
                  m_viewModel.ObjectListZone[i].SetActive(false);
                 }

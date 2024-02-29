@@ -75,6 +75,8 @@ namespace Core.ExtractItems
             if(m_viewModel.GameObjectListItem == null)
                 return;
             m_viewModel.GameObjectListItem[m_countDispose].SetActive(false);
+            if (m_countDispose >= 3)
+                m_countDispose -= 1;
             m_countDispose += 1;
         }
 

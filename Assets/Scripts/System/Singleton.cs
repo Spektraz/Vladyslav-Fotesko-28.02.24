@@ -50,9 +50,6 @@ namespace System
 
         private static bool applicationIsQuitting = false;
 
-        public void OnDestroy()
-        {
-            applicationIsQuitting = true;
-        }
+      
     }
 }

@@ -44,8 +44,14 @@ namespace Core.MainUi
                     m_viewModel.WoodCount.text = inventory.Wood.ToString();
                     break;
                 case ExtractType.Lumber:
-                    inventory.Lumber += itemCount;
-                    m_viewModel.LumberCount.text = inventory.Lumber.ToString();
+                    if (inventory.Wood >= GlobalConst.LumberToWoodCount)
+                    {
+                        int result = inventory.Wood / GlobalConst.LumberToWoodCount;
+                        inventory.Lumber += result;
+                        inventory.Wood -= (result * GlobalConst.LumberToWoodCount);
+                        m_viewModel.LumberCount.text = inventory.Lumber.ToString();
+                        m_viewModel.WoodCount.text = inventory.Wood.ToString();
+                    }
                     break;
                 case ExtractType.Stone:
                     inventory.Stone += itemCount;

@@ -14,9 +14,11 @@ namespace Core.Terrain
         [SerializeField] private List<GameObject> m_objectListZone = null;
         [Header("Collider")]
         [SerializeField] private List<Collider> m_colliderZone = null;
+        [SerializeField] private List<Collider> m_colliderReloadZone = null;
         public List<GameObject> ObjectListZone => m_objectListZone;
         public List<Canvas>  CanvasListZone => m_canvasListZone;
         public List<Collider> ColliderZone => m_colliderZone;
+        public List<Collider> ColliderReloadZone => m_colliderReloadZone;
         public List<SpriteRenderer> SpriteListZone => m_spriteListZone;
         
     }

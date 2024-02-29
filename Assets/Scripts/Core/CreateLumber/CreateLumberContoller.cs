@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class CreateLumberContoller 
 {
@@ -14,6 +12,7 @@ public class CreateLumberContoller
     public void SetParticle()
     {
         m_viewModel.LumberParticle.Play();
+        ApplicationContainer.Instance.EventHolder.OnAddItems(GlobalConst.LumberCount, ExtractType.Lumber);
     }
     public void TriggerEnter()
     {

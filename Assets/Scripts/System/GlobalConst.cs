@@ -13,10 +13,9 @@ namespace System
         public const string GameScene = "Scenes/Game";
         public const string ReloadScene = "Scenes/SampleScene";
         
-        [Header("Coins")] 
-        public const int StartNumber = 1;
-        public const int FinishNumber = 100;
-        public const int WinCoins = 10;
+        [Header("Count")] 
+        public const int LumberCount = 5;
+        public const int LumberToWoodCount = 3;
 
         [Header("MaxCoins")] 
         public const int CoinsK = 10000;
