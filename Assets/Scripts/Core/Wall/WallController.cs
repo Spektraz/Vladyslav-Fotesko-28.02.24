@@ -1,5 +1,7 @@
 using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 namespace Core.Wall
 {
@@ -11,9 +13,21 @@ namespace Core.Wall
             m_viewModel = viewModel;
         }
         public void TriggerEnter()
-        {
-            SceneManager.LoadScene(GlobalConst.ReloadScene);
-        }
+        {           
+            SaveManager.DeleteKeys(new string[] { GlobalConst.PositionPlayerX, GlobalConst.PositionPlayerY, GlobalConst.PositionPlayerZ }, () => {
+                // Обратный вызов выполняется после завершения удаления ключей
+                // Загрузка сцены только после удаления ключей
+                SceneManager.LoadScene(GlobalConst.GameScene);
+            });
+            //    SaveManager.DeleteKey(GlobalConst.PositionPlayerX);
+            //SaveManager.DeleteKey(GlobalConst.PositionPlayerY);
+            //SaveManager.DeleteKey(GlobalConst.PositionPlayerZ);
 
+        }         
+        public IEnumerator LoadSceneReload()
+        {
+            yield return new WaitForSeconds(0.2f);
+          //  SceneManager.LoadScene(GlobalConst.ReloadScene);
+        }
     }
 }

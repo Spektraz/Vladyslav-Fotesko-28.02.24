@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -24,7 +25,21 @@ namespace Core.MainUi
 
         private void InitializeCounters()
         {
-            
+           
+            int WoodCount = SaveManager.LoadInt(GlobalConst.ResouresWood);
+            int LumberCount = SaveManager.LoadInt(GlobalConst.ResouresLumber);
+            int StoneCount = SaveManager.LoadInt(GlobalConst.ResouresStone);
+            int CrystallCount = SaveManager.LoadInt(GlobalConst.ResouresCrystall);
+            currentSpot = SaveManager.LoadInt(GlobalConst.Titles);
+            inventory.Wood = WoodCount;
+            inventory.Lumber = LumberCount;
+            inventory.Stone = StoneCount;
+            inventory.Crystall = CrystallCount;
+            m_viewModel.WoodCount.text = inventory.Wood.ToString();
+            m_viewModel.LumberCount.text = inventory.Lumber.ToString();
+            m_viewModel.StoneCount.text = inventory.Stone.ToString();
+            m_viewModel.CrystallCount.text = inventory.Crystall.ToString();
+
         }
         private void InitializeEvents()
         {
@@ -49,6 +64,7 @@ namespace Core.MainUi
                 case ExtractType.Wood:
                     inventory.Wood += itemCount;
                     m_viewModel.WoodCount.text = inventory.Wood.ToString();
+                    Save(GlobalConst.ResouresWood, inventory.Wood);               
                     break;
                 case ExtractType.Lumber:
                     if (inventory.Wood >= GlobalConst.LumberToWoodCount)
@@ -58,15 +74,19 @@ namespace Core.MainUi
                         inventory.Wood -= (result * GlobalConst.LumberToWoodCount);
                         m_viewModel.LumberCount.text = inventory.Lumber.ToString();
                         m_viewModel.WoodCount.text = inventory.Wood.ToString();
+                        Save(GlobalConst.ResouresWood, inventory.Wood);
+                        Save(GlobalConst.ResouresLumber, inventory.Lumber);                  
                     }
                     break;
                 case ExtractType.Stone:
                     inventory.Stone += itemCount;
                     m_viewModel.StoneCount.text = inventory.Stone.ToString();
+                    Save(GlobalConst.ResouresStone, inventory.Stone);                   
                     break;
                 case ExtractType.Crystall:
                     inventory.Crystall += itemCount;
                     m_viewModel.CrystallCount.text = inventory.Crystall.ToString();
+                    Save(GlobalConst.ResouresCrystall, inventory.Crystall);                  
                     break;
             }
         }
@@ -81,6 +101,7 @@ namespace Core.MainUi
                         inventory.Wood -= itemMustBe;                   
                          m_viewModel.WoodCount.text = inventory.Wood.ToString();
                         currentSpot += 1;
+                        Save(GlobalConst.ResouresWood, inventory.Wood);
                         ApplicationContainer.Instance.EventHolder.OnMaxItems(itemMustBe, currentSpot);
                         ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
                     }
@@ -101,6 +122,7 @@ namespace Core.MainUi
                             inventory.Wood = 0;
                             ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot + 1);
                         }
+                        Save(GlobalConst.ResouresWood, inventory.Wood);
                         m_viewModel.WoodCount.text = inventory.Wood.ToString();    
                     }
                     break;
@@ -110,6 +132,7 @@ namespace Core.MainUi
                         inventory.Lumber -= itemMustBe;
                         m_viewModel.LumberCount.text = inventory.Lumber.ToString();
                         currentSpot += 1;
+                        Save(GlobalConst.ResouresLumber, inventory.Lumber);
                         ApplicationContainer.Instance.EventHolder.OnMaxItems(itemMustBe, currentSpot);
                         ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
                     }
@@ -130,6 +153,7 @@ namespace Core.MainUi
                             inventory.Lumber = 0;
                             ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot + 1);
                         }
+                        Save(GlobalConst.ResouresLumber, inventory.Lumber);
                         m_viewModel.LumberCount.text = inventory.Lumber.ToString();
                     }
                     break;
@@ -139,6 +163,7 @@ namespace Core.MainUi
                         inventory.Stone -= itemMustBe;
                         m_viewModel.StoneCount.text = inventory.Stone.ToString();
                         currentSpot += 1;
+                        Save(GlobalConst.ResouresStone, inventory.Stone);
                         ApplicationContainer.Instance.EventHolder.OnMaxItems(itemMustBe, currentSpot);
                         ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
                     }
@@ -159,6 +184,7 @@ namespace Core.MainUi
                             inventory.Stone = 0;
                             ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot + 1);
                         }
+                        Save(GlobalConst.ResouresStone, inventory.Stone);
                         m_viewModel.StoneCount.text = inventory.Stone.ToString();
                     }
                     break;
@@ -168,26 +194,32 @@ namespace Core.MainUi
                         inventory.Crystall -= itemMustBe;
                         m_viewModel.CrystallCount.text = inventory.Crystall.ToString();
                         currentSpot += 1;
+                        Save(GlobalConst.ResouresCrystall, inventory.Crystall);
                         ApplicationContainer.Instance.EventHolder.OnMaxItems(itemMustBe, currentSpot);
                         ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
+
                     }
                     else
                     {
                         inventory.ResultZone += itemHave + inventory.Crystall;
                         if (inventory.ResultZone > itemMustBe)
                         {
+                          
                             int number = inventory.ResultZone - itemMustBe;
                             inventory.ResultZone -= number;
                             inventory.Crystall = number;
-                            currentSpot += 1;
+                            currentSpot += 1;                          
                             ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
                             ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot);
                         }
                         else
                         {
+                                            
                             inventory.Crystall = 0;
                             ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot + 1);
+                            
                         }
+                        Save(GlobalConst.ResouresCrystall, inventory.Crystall);
                         m_viewModel.CrystallCount.text = inventory.Crystall.ToString();
                     }
                     break;
@@ -202,6 +234,11 @@ namespace Core.MainUi
                 resultSpend = count;
             }
         }
+        private void Save(string name, int score)
+        {
+            SaveManager.Save(name, score);
+        }
+      
         private void ReloadResult()
         {
             inventory.ResultZone = 0;

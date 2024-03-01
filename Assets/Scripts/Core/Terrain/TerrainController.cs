@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Core.Terrain
 {
@@ -18,6 +19,7 @@ namespace Core.Terrain
         }
         private void InitializeTerrains()
         {
+            countOpen = Load();
             SwitchOnZone();
         }
 
@@ -27,10 +29,7 @@ namespace Core.Terrain
         }
         private void SwitchOnZone()
         {
-            SwitchOffZone();
-            //m_viewModel.CanvasListZone[countOpen].enabled = true;
-            //m_viewModel.SpriteListZone[countOpen].enabled = true;
-            //m_viewModel.ColliderZone[countOpen].enabled = true;
+            SwitchOffZone();         
 
             for (int i = 0; i < countOpen; i++)
             {
@@ -64,8 +63,18 @@ namespace Core.Terrain
         }
         private void AddZone()
         {         
-            countOpen += 1;         
+            countOpen += 1;
+            Save(countOpen);
             SwitchOnZone();
+        }
+        private void Save(int save)
+        {
+            SaveManager.Save(GlobalConst.Titles, save);
+        }
+        private int Load()
+        {
+            var result = SaveManager.LoadInt(GlobalConst.Titles);
+            return result;
         }
         private void DisposeEvents()
         {

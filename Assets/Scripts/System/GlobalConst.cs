@@ -5,10 +5,14 @@ namespace System
     public class GlobalConst 
     {
         [Header("Save")]
-        public const string SoundKey = "Sound";
-        public const string CoinsString = "CoinsStringss";
-        public const string CoinsInt = "CoinsIntss";
-        public const string SceneMainGame = "MainScene";
+        public const string Titles = "Titles";
+        public const string ResouresWood = "ResouresWood";
+        public const string ResouresLumber = "ResouresLumber";
+        public const string ResouresStone = "ResouresStone";
+        public const string ResouresCrystall = "ResouresCrystall";
+        public const string PositionPlayerX = "PositionPlayerX";
+        public const string PositionPlayerY = "PositionPlayerY";
+        public const string PositionPlayerZ = "PositionPlayerZ";
         [Header("Scene")]
         public const string GameScene = "Scenes/Game";
         public const string ReloadScene = "Scenes/SampleScene";
@@ -17,10 +21,6 @@ namespace System
         public const int LumberCount = 5;
         public const int LumberToWoodCount = 3;
 
-        [Header("MaxCoins")] 
-        public const int CoinsK = 10000;
-        public const int CoinsM = 10000000;
-        public const int CoinsDivisorK = 1000;
-        public const int CoinsDivisorM = 1000000;
+  
     }
 }

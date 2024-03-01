@@ -394,6 +394,7 @@
 "Assets/Scripts/System/EventHolder.cs"
 "Assets/Scripts/System/GameSceneInstaller.cs"
 "Assets/Scripts/System/GlobalConst.cs"
+"Assets/Scripts/System/Save/ResetData.cs"
 "Assets/Scripts/System/SaveManager.cs"
 "Assets/Scripts/System/Singleton.cs"
 -langversion:9.0

@@ -19,9 +19,10 @@ namespace Core.Player
         {
             m_viewModel = viewModel;
         }
+        
         public void Initialize()
         {
-          
+            Load();
             InitializeEvents();
         }
 
@@ -73,6 +74,9 @@ namespace Core.Player
                 m_viewModel.CharacterObject.gameObject.transform.rotation = Quaternion.RotateTowards( m_viewModel.CharacterObject.gameObject.transform.rotation, targetRotation, m_speedRot * Time.deltaTime);
                 Vector3 movementDirection = new Vector3(m_horizontalInput, 0f, m_verticalInput).normalized;
                 m_viewModel.PresetObject.transform.Translate(movementDirection * m_speed * Time.deltaTime);
+                Save(GlobalConst.PositionPlayerX, m_viewModel.PresetObject.transform.position.x);
+                Save(GlobalConst.PositionPlayerY, m_viewModel.PresetObject.transform.position.y);
+                Save(GlobalConst.PositionPlayerZ, m_viewModel.PresetObject.transform.position.z);
             }
             
         }
@@ -80,7 +84,21 @@ namespace Core.Player
         {
             m_positionJoystick = posJoystick;
         }
-
+        private void Save(string name,float save)
+        {
+            SaveManager.Save(name, save);
+        }
+        private void Load()
+        {
+            float posX = SaveManager.LoadFloat(GlobalConst.PositionPlayerX);
+            float posY = SaveManager.LoadFloat(GlobalConst.PositionPlayerY);
+            float posZ = SaveManager.LoadFloat(GlobalConst.PositionPlayerZ);
+            m_viewModel.PresetObject.transform.position = new Vector3(posX, posY, posZ);    
+            if (m_viewModel.PresetObject.transform.position == new Vector3(0, 0, 0))
+            {
+                m_viewModel.PresetObject.transform.position = new Vector3(posX, posY, 3.88f);
+            }
+        }
         private void SetAnimRun(bool state)
         {
             m_viewModel.CharacterAnimator.SetBool(m_runExtractAnimation, !state);

@@ -8,11 +8,16 @@ namespace System
       {
          PlayerPrefs.SetString(key, saveData);
       }
-      public static void Save(string key, int saveData)
+  
+        public static void Save(string key, int saveData)
       {
-         PlayerPrefs.SetInt(key, saveData);
+         PlayerPrefs.SetInt(key, saveData);       
       }
-      public static int LoadInt(string key)
+        public static void Save(string key, float saveData)
+        {
+            PlayerPrefs.SetFloat(key, saveData);
+        }
+        public static int LoadInt(string key)
       {
          if (PlayerPrefs.HasKey(key))
          {
@@ -22,7 +27,17 @@ namespace System
 
          return 0;
       }
-      public static string LoadString(string key)
+        public static float LoadFloat(string key)
+        {
+            if (PlayerPrefs.HasKey(key))
+            {
+                var loadedString = PlayerPrefs.GetFloat(key);
+                return loadedString;
+            }
+
+            return 0;
+        }
+        public static string LoadString(string key)
       {
          if (PlayerPrefs.HasKey(key))
          {
@@ -32,5 +47,22 @@ namespace System
 
          return null;
       }
-   }
+        public static void DeleteData()
+        {
+            PlayerPrefs.DeleteAll();
+        }
+        public static void DeleteKey(string key)
+        {
+            PlayerPrefs.DeleteKey(key);
+        }
+        public static void DeleteKeys(string[] strings, Action value)
+        {
+            foreach(var s in strings)
+            {
+                PlayerPrefs.DeleteKey(s);            
+            }
+            value.Invoke();
+        }
+      
+    }
 }

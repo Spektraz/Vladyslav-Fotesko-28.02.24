@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\Core\Wall\WallView.cs" />
     <Compile Include="Assets\Scripts\Core\MainUi\MainUiController.cs" />
     <Compile Include="Assets\Scripts\Core\Finish\FinishView.cs" />
+    <Compile Include="Assets\Scripts\System\Save\ResetData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rd-Party\TextMesh Pro\Shaders\TMPro.cginc" />

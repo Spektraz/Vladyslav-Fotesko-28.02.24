@@ -16,7 +16,7 @@ namespace Core.Spot
         }
         public void Initialize()
         {
-        
+            nowCount = Load();
             InitializeEvents();
         }
 
@@ -64,8 +64,12 @@ namespace Core.Spot
             ApplicationContainer.Instance.EventHolder.OnMaxItemsEvent -= SetCounter;
             ApplicationContainer.Instance.EventHolder.OnSetUpdateScoreEvent -= SetScore;
         }
+        private int Load()
+        {
+            var result = SaveManager.LoadInt(GlobalConst.Titles + 1);
+            return result;
+        }
 
-     
         public void Dispose()
         {
             DisposeEvents();

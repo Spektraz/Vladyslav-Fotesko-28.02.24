@@ -19,6 +19,7 @@ public class FinishController
     {
         m_viewModel.FinishAnimator.SetTrigger(m_finishAnimName);
         yield return new WaitForSeconds(1.5f);
+        SaveManager.DeleteData();
         SceneManager.LoadScene(GlobalConst.ReloadScene);
     }
    

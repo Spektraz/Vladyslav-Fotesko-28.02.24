@@ -8,6 +8,7 @@ public class CreateLumberContoller
     public CreateLumberContoller(CreateLumberModel viewModel)
     {
         m_viewModel = viewModel;
+        m_viewModel.LumberCanvas.enabled = false;
     }
     public void SetParticle()
     {
