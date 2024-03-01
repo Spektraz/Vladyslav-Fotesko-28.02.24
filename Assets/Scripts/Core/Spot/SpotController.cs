@@ -1,4 +1,3 @@
-using Core.MainUi;
 using System;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ namespace Core.Spot
 
         private SpotModel m_viewModel = null;
         private string maxCount = null;
-        private bool isUpdate = false;
+    
         public SpotController(SpotModel viewModel)
         {
             m_viewModel = viewModel; 
@@ -17,13 +16,13 @@ namespace Core.Spot
         }
         public void Initialize()
         {
-            SetCounter(0);
+        
             InitializeEvents();
         }
 
         public void TriggerEnter()
         {
-            isUpdate = false;
+         
             int countNow = 0;
             int.TryParse(m_viewModel.TextCounter.ToString(), out countNow);
             ApplicationContainer.Instance.EventHolder.OnSpendItems(Convert.ToInt32(maxCount),  countNow, m_viewModel.ExtractType);
@@ -31,26 +30,32 @@ namespace Core.Spot
 
         private void InitializeEvents()
         {
-            Debug.Log("InitializeEvents");
             ApplicationContainer.Instance.EventHolder.OnMaxItemsEvent += SetCounter;
             ApplicationContainer.Instance.EventHolder.OnSetUpdateScoreEvent += SetScore;
         }
     
-        private void SetCounter(int count)
-        {        
-            m_viewModel.TextCounter.text = count.ToString();          
-            if (count == Convert.ToInt32(maxCount))
+        private void SetCounter(int count, int index)
+        {
+            if (index == m_viewModel.IndexSpot)
             {
-                ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
-                ApplicationContainer.Instance.EventHolder.OnChangeSpot();
-                m_viewModel.TextCounter.text = "0";
-                      
+                m_viewModel.TextCounter.text = count.ToString();
+                if (count == Convert.ToInt32(maxCount))
+                {
+                    Debug.Log(m_viewModel.gameObject.name);
+                    ApplicationContainer.Instance.EventHolder.OnChangeSpot();
+                    ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
+                }
             }
+            ApplicationContainer.Instance.EventHolder.OnScoreLast(count);
         }
         private void SetScore(bool isState)
         {
-            Debug.Log("SetScore");
-            m_viewModel.TextCounter.text = "0";        
+
+            if (isState)
+            {
+                m_viewModel.TextCounter.text = "0";
+                  
+            }
         }
         private void DisposeEvents()
         {

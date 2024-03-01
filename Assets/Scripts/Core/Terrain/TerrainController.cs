@@ -28,15 +28,24 @@ namespace Core.Terrain
         private void SwitchOnZone()
         {
             SwitchOffZone();
+            //m_viewModel.CanvasListZone[countOpen].enabled = true;
+            //m_viewModel.SpriteListZone[countOpen].enabled = true;
+            //m_viewModel.ColliderZone[countOpen].enabled = true;
+
+            for (int i = 0; i < countOpen; i++)
+            {
+                if (countOpen > 0)
+                {
+                    m_viewModel.ObjectListZone[countOpen - 1].SetActive(true);
+                    m_viewModel.ColliderReloadZone[i].enabled = false;
+                   
+                }
+               
+            }
             m_viewModel.CanvasListZone[countOpen].enabled = true;
             m_viewModel.SpriteListZone[countOpen].enabled = true;
             m_viewModel.ColliderZone[countOpen].enabled = true;
-          
-            if (countOpen > 0)
-            {
-                m_viewModel.ObjectListZone[countOpen - 1].SetActive(true);
-                m_viewModel.ColliderReloadZone[countOpen - 1].enabled = false;
-            }
+
         }
 
         private void SwitchOffZone()
@@ -53,14 +62,9 @@ namespace Core.Terrain
                 }
             }
         }
-        private void SwitchOnCollector(int countRes)
-        {
-            
-        }
-
         private void AddZone()
         {         
-            countOpen =+ 1;         
+            countOpen += 1;         
             SwitchOnZone();
         }
         private void DisposeEvents()

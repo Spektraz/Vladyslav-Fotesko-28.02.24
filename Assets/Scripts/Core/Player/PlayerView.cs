@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Core.Player
@@ -17,11 +16,6 @@ namespace Core.Player
         private void Update()
         {
             m_controller.Move();
-        }
-
-        public void OnEndAttack()
-        {
-            m_controller.AnimationAttack();
         }
 
         private void OnDestroy()

@@ -33,12 +33,13 @@ namespace System
             var temp = OnAddItemsEvent;
             temp?.Invoke(itemsMustBeCount,extractType);
         }
-        public Action<int> OnMaxItemsEvent;
-        public void OnMaxItems(int itemsCount)
+        public Action<int, int> OnMaxItemsEvent;
+        public void OnMaxItems(int itemsCount, int index)
         {
             var temp = OnMaxItemsEvent;
-            temp?.Invoke(itemsCount);
+            temp?.Invoke(itemsCount, index);
         }
+      
         public Action OnChangeSpotEvent;
         public void OnChangeSpot()
         {
@@ -50,6 +51,12 @@ namespace System
         {
             var temp = OnSetUpdateScoreEvent;
             temp?.Invoke(isState);
+        }
+        public Action<int> OnScoreLastEvent;
+        public void OnScoreLast(int itemsCount)
+        {
+            var temp = OnScoreLastEvent;
+            temp?.Invoke(itemsCount);
         }
     }
 }

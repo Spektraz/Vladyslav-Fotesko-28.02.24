@@ -10,11 +10,6 @@ namespace Core.Wall
         {
             m_viewModel = viewModel;
         }
-        public void Initialize()
-        {
-           
-        }
-
         public void TriggerEnter()
         {
             SceneManager.LoadScene(GlobalConst.ReloadScene);

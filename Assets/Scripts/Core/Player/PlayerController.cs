@@ -76,12 +76,6 @@ namespace Core.Player
             }
             
         }
-
-        public void AnimationAttack()
-        {
-            Debug.Log("Anium");
-            //m_viewModel.CharacterAnimator.
-        }
         private void SetRun(Vector2 posJoystick)
         {
             m_positionJoystick = posJoystick;

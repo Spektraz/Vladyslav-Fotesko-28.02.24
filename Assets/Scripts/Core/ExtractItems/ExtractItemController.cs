@@ -9,18 +9,11 @@ namespace Core.ExtractItems
 
         private ExtractItemModel m_viewModel = null;
         private int m_countDispose = 0;
-        private float m_speedDestroy = 10;
-        private string m_animDestroy = "Destroy";
-        private string m_animCreate = "Create";
+        private float m_speedDestroy = 10;      
         private bool m_isRotate = false;
         public ExtractItemController(ExtractItemModel viewModel)
         {
             m_viewModel = viewModel;
-        }
-        public void Initialize()
-        {
-          
-            InitializeEvents();
         }
 
         public void TriggerEnter()
@@ -32,16 +25,7 @@ namespace Core.ExtractItems
         {
             ApplicationContainer.Instance.EventHolder.OnSwitchToExtract(ToolsName.Unset);
         }
-        private void InitializeEvents()
-        {
-            
-        }
-       
-        private void DisposeEvents()
-        {
-          
-        }
-
+      
         public void RotateObject()
         {
             if (m_isRotate)
@@ -74,9 +58,9 @@ namespace Core.ExtractItems
         {
             if(m_viewModel.GameObjectListItem == null)
                 return;
-            m_viewModel.GameObjectListItem[m_countDispose].SetActive(false);
             if (m_countDispose >= 3)
-                m_countDispose -= 1;
+                m_countDispose -= 1;         
+            m_viewModel.GameObjectListItem[m_countDispose].SetActive(false);        
             m_countDispose += 1;
         }
 
@@ -89,9 +73,6 @@ namespace Core.ExtractItems
                 var.SetActive(true);
             }
         }
-        public void Dispose()
-        {
-           // DisposeEvents();
-        }
+     
     }
 }

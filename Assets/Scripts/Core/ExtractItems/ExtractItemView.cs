@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Core.ExtractItems
@@ -11,8 +10,7 @@ namespace Core.ExtractItems
 
         private void Start()
         {
-            m_controller = new ExtractItemController(m_viewModel);
-            m_controller.Initialize();
+            m_controller = new ExtractItemController(m_viewModel);          
         }
   
 
@@ -33,9 +31,6 @@ namespace Core.ExtractItems
           
             m_controller.TriggerExit();
         }
-        private void OnDestroy()
-        {
-            m_controller.Dispose();
-        }
+      
     }
 }

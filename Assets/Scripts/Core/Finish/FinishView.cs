@@ -11,8 +11,6 @@ public class FinishView : MonoBehaviour
         m_controller = new FinishController(m_viewModel);
      
     }
-
-
     private void OnTriggerEnter(Collider other)
     {
 
