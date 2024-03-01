@@ -57,9 +57,9 @@ namespace System
         }
         public static void DeleteKeys(string[] strings, Action value)
         {
-            foreach(var s in strings)
+            foreach(var key in strings)
             {
-                PlayerPrefs.DeleteKey(s);            
+                PlayerPrefs.DeleteKey(key);            
             }
             value.Invoke();
         }

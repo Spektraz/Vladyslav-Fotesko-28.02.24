@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class FinishController
 {
     private FinishModel m_viewModel = null;
-    private string m_finishAnimName = "Finish";
+    private string m_finishAnimName = null;
     public FinishController(FinishModel viewModel)
     {
         m_viewModel = viewModel;
+        m_finishAnimName = GlobalConst.FinishAnimation;
     }
     public void TriggerEnter()
     {

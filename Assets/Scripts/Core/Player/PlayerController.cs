@@ -8,16 +8,20 @@ namespace Core.Player
 
         private PlayerModel m_viewModel = null;
         private Vector2 m_positionJoystick = Vector2.zero;
-        private string m_axeExtractAnimation = "Axe";
-        private string m_runExtractAnimation = "Run";
+        private string m_axeExtractAnimation = null;
+        private string m_runExtractAnimation = null;
         private  float m_horizontalInput = 0;
         private float m_verticalInput = 0;
-        private float m_speed = 3.0f;
-        private float m_speedRot = 360;
+        private float m_speed = 0;
+        private float m_speedRot = 0;
         private bool m_isRun = false;
         public PlayerController(PlayerModel viewModel)
         {
             m_viewModel = viewModel;
+            m_speedRot = GlobalConst.SpeedRotationPlayer;
+            m_speed = GlobalConst.SpeedMovePlayer;
+            m_axeExtractAnimation = GlobalConst.AxeAnimation;
+            m_runExtractAnimation = GlobalConst.RunAnimation;
         }
         
         public void Initialize()
@@ -96,7 +100,7 @@ namespace Core.Player
             m_viewModel.PresetObject.transform.position = new Vector3(posX, posY, posZ);    
             if (m_viewModel.PresetObject.transform.position == new Vector3(0, 0, 0))
             {
-                m_viewModel.PresetObject.transform.position = new Vector3(posX, posY, 3.88f);
+                m_viewModel.PresetObject.transform.position = new Vector3(posX, posY, GlobalConst.StartCoordPlayer);
             }
         }
         private void SetAnimRun(bool state)

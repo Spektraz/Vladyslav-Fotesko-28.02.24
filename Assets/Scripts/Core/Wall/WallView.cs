@@ -14,10 +14,8 @@ namespace Core.Wall
         }
 
         private void OnTriggerEnter(Collider other)
-        {
-            StartCoroutine(m_controller.LoadSceneReload());
-            m_controller.TriggerEnter();
-         
+        {        
+            m_controller.TriggerEnter();        
         }
     }
 }

@@ -1,0 +1,4 @@
+#Fri Mar 01 15:32:34 EET 2024
+base.0=D\:\\UnityProject\\24Play\\Vladyslav-Fotesko-28.02.24\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

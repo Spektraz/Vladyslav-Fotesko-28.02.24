@@ -16,11 +16,20 @@ namespace System
         [Header("Scene")]
         public const string GameScene = "Scenes/Game";
         public const string ReloadScene = "Scenes/SampleScene";
-        
+        [Header("NameAnimation")]
+        public const string AxeAnimation = "Axe";
+        public const string RunAnimation = "Run";
+        public const string FinishAnimation = "Finish";
         [Header("Count")] 
         public const int LumberCount = 5;
         public const int LumberToWoodCount = 3;
+        public const int ObjectPartDestroy = 3;
+        public const float ObjectSpeedDestroy = 10.0f;
+        [Header("Coordination")]
+        public const int SpeedRotationPlayer = 360;
+        public const float SpeedMovePlayer = 3.0f;
+        public const float StartCoordPlayer = 3.88f;
+      
 
-  
     }
 }

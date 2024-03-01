@@ -9,11 +9,12 @@ namespace Core.ExtractItems
 
         private ExtractItemModel m_viewModel = null;
         private int m_countDispose = 0;
-        private float m_speedDestroy = 10;      
+        private float m_speedDestroy = 0;      
         private bool m_isRotate = false;
         public ExtractItemController(ExtractItemModel viewModel)
         {
             m_viewModel = viewModel;
+            m_speedDestroy = GlobalConst.ObjectSpeedDestroy;
         }
 
         public void TriggerEnter()
@@ -58,7 +59,7 @@ namespace Core.ExtractItems
         {
             if(m_viewModel.GameObjectListItem == null)
                 return;
-            if (m_countDispose >= 3)
+            if (m_countDispose >= GlobalConst.ObjectPartDestroy)
                 m_countDispose -= 1;         
             m_viewModel.GameObjectListItem[m_countDispose].SetActive(false);        
             m_countDispose += 1;

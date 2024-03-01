@@ -12,7 +12,7 @@ public class CreateLumberView : MonoBehaviour
     }
     private void SetParticle()
     {
-        m_controller.SetParticle();
+        m_controller.SetParticle(); // Triggered in the animation event
     }
 
     private void OnTriggerEnter(Collider other)
