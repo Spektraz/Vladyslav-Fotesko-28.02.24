@@ -24822,6 +24822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389a74e78a7aeb347a938f9d06e5eb2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_lumberCanvas: {fileID: 1345805322}
   m_lumberParticle: {fileID: 1247297377}
   m_lumberAnimator: {fileID: 1415310978}
 --- !u!1 &2136412521 stripped

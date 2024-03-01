@@ -17,5 +17,11 @@ public class CreateLumberContoller
     public void TriggerEnter()
     {
         m_viewModel.LumberAnimator.SetTrigger(m_lumberAnimName);
+        m_viewModel.LumberCanvas.enabled = true;
+    }
+    public void TriggerExit()
+    {
+        m_viewModel.LumberAnimator.SetTrigger(m_lumberAnimName);
+        m_viewModel.LumberCanvas.enabled = false;
     }
 }

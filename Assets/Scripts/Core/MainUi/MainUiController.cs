@@ -31,6 +31,7 @@ namespace Core.MainUi
             ApplicationContainer.Instance.EventHolder.OnAddItemsEvent += AddInCounter;
             ApplicationContainer.Instance.EventHolder.OnSpendItemsEvent += SpendInCounter;
             ApplicationContainer.Instance.EventHolder.OnScoreLastEvent += ChangeScore;
+            ApplicationContainer.Instance.EventHolder.OnChangeSpotEvent += ReloadResult;
         }
 
         private void DisposeEvents()
@@ -38,7 +39,7 @@ namespace Core.MainUi
             ApplicationContainer.Instance.EventHolder.OnAddItemsEvent -= AddInCounter;
             ApplicationContainer.Instance.EventHolder.OnSpendItemsEvent -= SpendInCounter;
             ApplicationContainer.Instance.EventHolder.OnScoreLastEvent -= ChangeScore;
-
+            ApplicationContainer.Instance.EventHolder.OnChangeSpotEvent -= ReloadResult;
         }
 
         private void AddInCounter(int itemCount, ExtractType extractType)
@@ -85,19 +86,22 @@ namespace Core.MainUi
                     }
                     else
                     {
-                        int result = 0;
-                        inventory.ResultZone += itemHave + inventory.Wood;                  
-                        ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot);
-                        if (inventory.ResultZone >= itemMustBe)
+                        inventory.ResultZone += itemHave + inventory.Wood;                     
+                        if (inventory.ResultZone > itemMustBe)                   
                         {
-                            currentSpot += 1;
-                            result =  inventory.ResultZone - itemMustBe;
-                            inventory.ResultZone = 0;
-                            m_viewModel.WoodCount.text = result.ToString();
+                            int number = inventory.ResultZone - itemMustBe;
+                            inventory.ResultZone -= number;                           
+                            inventory.Wood = number;
+                            currentSpot += 1;                        
                             ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
+                            ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot);
                         }
-                        inventory.Wood = result;
-                        m_viewModel.WoodCount.text  = inventory.Wood.ToString();
+                        else
+                        {
+                            inventory.Wood = 0;
+                            ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot + 1);
+                        }
+                        m_viewModel.WoodCount.text = inventory.Wood.ToString();    
                     }
                     break;
                 case ExtractType.Lumber:
@@ -111,18 +115,21 @@ namespace Core.MainUi
                     }
                     else
                     {
-                        int result = 0;
                         inventory.ResultZone += itemHave + inventory.Lumber;
-                        ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot);
-                        if (inventory.ResultZone >= itemMustBe)
+                        if (inventory.ResultZone > itemMustBe)
                         {
+                            int number = inventory.ResultZone - itemMustBe;
+                            inventory.ResultZone -= number;
+                            inventory.Lumber = number;
                             currentSpot += 1;
-                            result = inventory.ResultZone - itemMustBe;
-                            inventory.ResultZone = 0;
-                            m_viewModel.LumberCount.text = result.ToString();
                             ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
+                            ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot);
                         }
-                        inventory.Lumber = result;
+                        else
+                        {
+                            inventory.Lumber = 0;
+                            ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot + 1);
+                        }
                         m_viewModel.LumberCount.text = inventory.Lumber.ToString();
                     }
                     break;
@@ -137,18 +144,21 @@ namespace Core.MainUi
                     }
                     else
                     {
-                        int result = 0;
                         inventory.ResultZone += itemHave + inventory.Stone;
-                        ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot);
-                        if (inventory.ResultZone >= itemMustBe)
+                        if (inventory.ResultZone > itemMustBe)
                         {
+                            int number = inventory.ResultZone - itemMustBe;
+                            inventory.ResultZone -= number;
+                            inventory.Stone = number;
                             currentSpot += 1;
-                            result = inventory.ResultZone - itemMustBe;
-                            inventory.ResultZone = 0;
-                            m_viewModel.StoneCount.text = result.ToString();
                             ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
+                            ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot);
                         }
-                        inventory.Stone = result;
+                        else
+                        {
+                            inventory.Stone = 0;
+                            ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot + 1);
+                        }
                         m_viewModel.StoneCount.text = inventory.Stone.ToString();
                     }
                     break;
@@ -163,18 +173,21 @@ namespace Core.MainUi
                     }
                     else
                     {
-                        int result = 0;
                         inventory.ResultZone += itemHave + inventory.Crystall;
-                        ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot);
-                        if (inventory.ResultZone >= itemMustBe)
+                        if (inventory.ResultZone > itemMustBe)
                         {
+                            int number = inventory.ResultZone - itemMustBe;
+                            inventory.ResultZone -= number;
+                            inventory.Crystall = number;
                             currentSpot += 1;
-                            result = inventory.ResultZone - itemMustBe;
-                            inventory.ResultZone = 0;
-                            m_viewModel.CrystallCount.text = result.ToString();
                             ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
+                            ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot);
                         }
-                        inventory.Crystall = result;
+                        else
+                        {
+                            inventory.Crystall = 0;
+                            ApplicationContainer.Instance.EventHolder.OnMaxItems(inventory.ResultZone, currentSpot + 1);
+                        }
                         m_viewModel.CrystallCount.text = inventory.Crystall.ToString();
                     }
                     break;
@@ -185,7 +198,13 @@ namespace Core.MainUi
             if (resultSpend != count)
                 ApplicationContainer.Instance.EventHolder.OnSetUpdateScoreEvent(true);
             else
+            {            
                 resultSpend = count;
+            }
+        }
+        private void ReloadResult()
+        {
+            inventory.ResultZone = 0;
         }
         public void Dispose()
         {

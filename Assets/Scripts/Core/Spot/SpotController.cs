@@ -8,7 +8,7 @@ namespace Core.Spot
 
         private SpotModel m_viewModel = null;
         private string maxCount = null;
-    
+        private int nowCount = 0;
         public SpotController(SpotModel viewModel)
         {
             m_viewModel = viewModel; 
@@ -38,13 +38,14 @@ namespace Core.Spot
         {
             if (index == m_viewModel.IndexSpot)
             {
+                nowCount = index;
                 m_viewModel.TextCounter.text = count.ToString();
                 if (count == Convert.ToInt32(maxCount))
-                {
-                    Debug.Log(m_viewModel.gameObject.name);
+                {                
                     ApplicationContainer.Instance.EventHolder.OnChangeSpot();
                     ApplicationContainer.Instance.EventHolder.OnSetUpdateScore(true);
                 }
+                return;
             }
             ApplicationContainer.Instance.EventHolder.OnScoreLast(count);
         }
@@ -53,7 +54,8 @@ namespace Core.Spot
 
             if (isState)
             {
-                m_viewModel.TextCounter.text = "0";
+                if(m_viewModel.IndexSpot > nowCount)
+                     m_viewModel.TextCounter.text = "0";
                   
             }
         }

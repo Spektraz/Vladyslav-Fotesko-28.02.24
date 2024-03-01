@@ -21,4 +21,10 @@ public class CreateLumberView : MonoBehaviour
         m_controller.TriggerEnter();
      
     }
+    private void OnTriggerExit(Collider other)
+    {
+
+        m_controller.TriggerExit();
+
+    }
 }
